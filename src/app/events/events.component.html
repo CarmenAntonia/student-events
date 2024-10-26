@@ -1,0 +1,38 @@
+<div class="form-group">
+  <p>Create an event</p>
+
+  <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="event.title" name="title" required>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="event.description" name="description" required></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Organizer</mat-label>
+    <mat-select [(ngModel)]="event.organizer" name="organizer" required>
+        <mat-option *ngFor="let student of students" [value]="student">
+            {{ student.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="event.date" name="date" required>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Budget</mat-label>
+      <input matInput type="number" [(ngModel)]="event.budget" name="budget" required>
+  </mat-form-field>
+
+  <button mat-button (click)="submitEvent()">Submit</button>
+</div>
